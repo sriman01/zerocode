@@ -1,3 +1,365 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    html {
+        scroll-behavior: smooth;
+
+        --gj-header-height: 4rem;
+        --gj-mobile-ui-height: 4rem;
+        /* --gj-px-screen-edge: clamp(1.5rem, 1.5rem + clamp(0, calc((10vw - 480px) / 600px), 1) * 8.5rem, 10rem); */
+        /* --gj-px-screen-edge: clamp(1.5rem, 5%, 10rem); */
+        /* --gj-px-screen-edge: clamp(1.5rem, 5vw, 10rem); */
+        --gj-px-screen-edge: 5vw;
+        --gj-py-section-divider: clamp(2rem, 5vw, 6rem);
+    }
+
+    body {
+        overflow-x: hidden;
+
+    }
+
+    html::-webkit-scrollbar{
+        display: none;
+    }
+
+    .tw-font-body {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .tw-font-body\+1 {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .tw-font-body\+2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    .tw-font-h1-2 {
+        font-size: 2.5rem;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+
+    .tw-font-h1-1 {
+        font-size: 2.5rem;
+        line-height: 1.5;
+    }
+
+    .tw-font-h1 {
+        font-size: 2.75rem;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    .tw-px-screen-edge {
+        padding-left: var(--gj-px-screen-edge);
+        padding-right: var(--gj-px-screen-edge);
+    }
+
+    .tw-py-section-divider {
+        height: var(--gj-py-section-divider);
+    }
+
+    .gj-button {
+        @apply tw-text-white tw-py-2 tw-rounded-full disabled:tw-text-neutral-800 hover:tw-brightness-125 tw-whitespace-nowrap tw-relative tw-px-16 tw-duration-200;
+        background: linear-gradient(90deg, #00A2ED, #1F40CB);
+        background-size: 200% 100%;
+        animation: gj-button-keyframes 5s ease infinite;
+    }
+
+    .gj-button:disabled {
+        background: #333333;
+    }
+
+    @keyframes gj-button-keyframes {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .gj-text-input {
+        @apply tw-p-4 tw-rounded-lg tw-bg-white tw-text-black disabled:tw-text-neutral-800 disabled:tw-bg-neutral-600 read-only:tw-text-neutral-800 read-only:tw-bg-neutral-600 tw-w-full;
+        box-shadow: 0px 9px 13px rgba(0, 0, 0, 0.07);
+    }
+
+    .gj-text-input-compact {
+        @apply tw-px-4 tw-rounded-lg tw-bg-transparent tw-text-white disabled:tw-text-neutral-800 disabled:tw-bg-neutral-600 read-only:tw-text-neutral-800 read-only:tw-bg-neutral-600 tw-w-full;
+        box-shadow: 0px 9px 13px rgba(0, 0, 0, 0.07);
+    }
+
+    .gj-text-input-editable {
+        @apply tw-bg-transparent tw-text-white disabled:tw-text-neutral-800 disabled:tw-bg-neutral-600 read-only:tw-text-neutral-800 read-only:tw-bg-neutral-600 tw-w-full focus:tw-outline focus:tw-outline-primary-1 focus:tw-outline-offset-8 tw-resize-none;
+    }
+
+    .gj-textarea-editable {
+        @apply tw-bg-transparent tw-text-white disabled:tw-text-neutral-800 disabled:tw-bg-neutral-600 read-only:tw-text-neutral-800 read-only:tw-bg-neutral-600 tw-w-full focus:tw-outline focus:tw-outline-primary-1 focus:tw-outline-offset-8 tw-resize-none;
+    }
+
+    .gj-text-select {
+        @apply tw-p-4 tw-rounded-lg tw-bg-white tw-text-black;
+        box-shadow: 0px 9px 13px rgba(0, 0, 0, 0.07);
+    }
+
+    .job-listing-card-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 4.5em;
+    }
+
+    /* Copy pasted from GJ website */
+    .gj-text-heading {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+
+        @apply tw-text-[1.5rem] md:tw-text-[2.125rem] tw-leading-[1.75rem] md:tw-leading-[2.5rem];
+    }
+
+    .gj-text-heading-light {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        @apply tw-text-[1.375rem] md:tw-text-[2rem] tw-leading-[1.75rem] md:tw-leading-[2.5rem];
+    }
+
+    .gj-text-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+
+        @apply tw-text-[1rem] md:tw-text-[1.375rem] tw-leading-[1.5rem] md:tw-leading-[1.75rem];
+    }
+
+    .gj-text-title-light {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        @apply tw-text-[1rem] md:tw-text-[1.375rem] tw-leading-[1.5rem] md:tw-leading-[1.75rem];
+    }
+
+    .gj-text-button {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+
+        @apply tw-text-[1rem] tw-leading-[1.5rem];
+    }
+
+    .gj-text-body-bold {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+
+        @apply tw-text-[1rem] tw-leading-[1.5rem];
+    }
+
+    .gj-text-body {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        @apply tw-text-[1rem] tw-leading-[1.5rem];
+    }
+
+    .gj-text-icon {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        @apply tw-text-[0.875rem] tw-leading-[1rem];
+    }
+
+    .gj-font-poppins {
+        font-family: "Poppins", sans-serif;
+    }
+
+    .gj-bg-primary-100 {
+        @apply tw-bg-primary-100-dark;
+    }
+
+    .gj-text-primary-100 {
+        @apply tw-text-primary-100-dark;
+    }
+
+    .gj-border-primary-100 {
+        @apply tw-border-primary-100-dark;
+    }
+
+    .gj-bg-primary-300 {
+        @apply tw-bg-primary-300-dark;
+    }
+
+    .gj-text-primary-300 {
+        @apply tw-text-primary-300-dark;
+    }
+
+    .gj-border-primary-300 {
+        @apply tw-border-primary-300-dark;
+    }
+
+    .gj-bg-primary-500 {
+        @apply tw-bg-primary-500-dark;
+    }
+
+    .gj-text-primary-500 {
+        @apply tw-text-primary-500-dark;
+    }
+
+    .gj-border-primary-500 {
+        @apply tw-border-primary-500-dark;
+    }
+
+    .gj-bg-background-500 {
+        @apply tw-bg-background-500-dark;
+    }
+
+    .gj-text-background-500 {
+        @apply tw-text-background-500-dark;
+    }
+
+    .gj-text-background-500-inverse {
+        @apply tw-text-background-500-light;
+    }
+
+    .gj-border-background-500 {
+        @apply tw-border-background-500-dark;
+    }
+
+    .gj-bg-foreground-100 {
+        @apply tw-bg-foreground-100-dark;
+    }
+
+    .gj-text-foreground-100 {
+        @apply tw-text-foreground-100-dark;
+    }
+
+    .gj-border-foreground-100 {
+        @apply tw-border-foreground-100-dark;
+    }
+
+    .gj-bg-foreground-300 {
+        @apply tw-bg-foreground-300-dark;
+    }
+
+    .gj-text-foreground-300 {
+        @apply tw-text-foreground-300-dark;
+    }
+
+    .gj-border-foreground-300 {
+        @apply tw-border-foreground-300-dark;
+    }
+
+    .gj-bg-foreground-500 {
+        @apply tw-bg-foreground-500-dark;
+    }
+
+    .gj-text-foreground-500 {
+        @apply tw-text-foreground-500-dark;
+    }
+
+    .gj-border-foreground-500 {
+        @apply tw-border-foreground-500-dark;
+    }
+
+    .gj-bg-foreground-700 {
+        @apply tw-bg-foreground-700-dark;
+    }
+
+    .gj-text-foreground-700 {
+        @apply tw-text-foreground-700-dark;
+    }
+
+    .gj-border-foreground-700 {
+        @apply tw-border-foreground-700-dark;
+    }
+
+    .gj-bg-foreground-900 {
+        @apply tw-bg-foreground-900-dark;
+    }
+
+    .gj-text-foreground-900 {
+        @apply tw-text-foreground-900-dark;
+    }
+
+    .gj-border-foreground-900 {
+        @apply tw-border-foreground-900-dark;
+    }
+
+    .gj-from-primary-100 {
+        @apply tw-from-primary-100-dark;
+    }
+
+    .gj-to-primary-100 {
+        @apply tw-to-primary-100-dark;
+    }
+
+    .gj-from-primary-300 {
+        @apply tw-from-primary-300-dark;
+    }
+
+    .gj-to-primary-300 {
+        @apply tw-to-primary-300-dark;
+    }
+
+    .gj-from-primary-500 {
+        @apply tw-from-primary-500-dark;
+    }
+
+    .gj-to-primary-500 {
+        @apply tw-to-primary-500-dark;
+    }
+
+    .gj-from-foreground-100 {
+        @apply tw-from-foreground-100-dark;
+    }
+
+    .gj-to-foreground-100 {
+        @apply tw-to-foreground-100-dark;
+    }
+
+    .gj-from-foreground-300 {
+        @apply tw-from-foreground-300-dark;
+    }
+
+    .gj-to-foreground-300 {
+        @apply tw-to-foreground-300-dark;
+    }
+
+    .gj-from-foreground-500 {
+        @apply tw-from-foreground-500-dark;
+    }
+
+    .gj-to-foreground-500 {
+        @apply tw-to-foreground-500-dark;
+    }
+
+    .gj-from-foreground-700 {
+        @apply tw-from-foreground-700-dark;
+    }
+
+    .gj-to-foreground-700 {
+        @apply tw-to-foreground-700-dark;
+    }
+
+    .gj-from-foreground-900 {
+        @apply tw-from-foreground-900-dark;
+    }
+
+    .gj-to-foreground-900 {
+        @apply tw-to-foreground-900-dark;
+    }
+
+    .gj-bg-primary-gradient {
+        @apply tw-bg-gradient-to-r gj-from-primary-500 gj-to-primary-300;
+    }
+}
